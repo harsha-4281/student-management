@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     students = Student.objects.all()
     return render(request, 'students/home.html', {'students': students})
+    return redirect('/students/')
 
 @login_required
 def add_student(request):
