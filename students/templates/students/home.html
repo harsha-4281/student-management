@@ -1,0 +1,31 @@
+{% extends 'students/base.html' %}
+
+{% block title %}Students{% endblock %}
+
+{% block content %}
+<h2>Students List</h2>
+
+{% if students %}
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.name }} |
+                {{ student.roll_number }} |
+                {{ student.email }} |
+                {{ student.course }} |
+                {{ student.age }}
+
+                <a href="{% url 'edit_student' student.id %}">Edit</a>
+                <a href="{% url 'delete_student' student.id %}"
+                   onclick="return confirm('Are you sure?');">
+                   Delete
+                </a>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No students found.</p>
+{% endif %}
+
+{% endblock %}
